@@ -1,2 +1,2 @@
 docker build --no-cache  -t catdog .     
-docker run --name catdog -p "8081:8080" -d catdog
+docker run --name catdog -p "8081:8080" -d -v ./uploads:/app/uploads catdog

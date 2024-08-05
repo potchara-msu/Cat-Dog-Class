@@ -5,6 +5,8 @@ from torchvision import transforms
 import numpy as np
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from werkzeug.utils import secure_filename
+import os
 
 
 class CustomModel(nn.Module):
@@ -134,7 +136,14 @@ def classify_image():
 
   try:
     # image_data = file.read()
-    image = np.array(Image.open(file))
+
+    if file :
+      filename = secure_filename(file.filename)
+      filepath = os.path.join('uploads', filename)
+      file.save(filepath)
+
+
+    image = np.array(Image.open(filepath))
     prediction = predict(image)
     return jsonify(prediction)
   except Exception as e:

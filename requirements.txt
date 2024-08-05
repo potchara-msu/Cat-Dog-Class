@@ -4,3 +4,4 @@ pillow
 numpy
 flask
 flask_cors
+werkzeug
