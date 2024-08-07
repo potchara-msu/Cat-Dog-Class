@@ -1,11 +1,11 @@
-FROM python:3.9-slim-buster
+FROM python
 
 # Set the working directory
 WORKDIR /app
 
 ARG CACHEBUST=1
 
-# RUN git clone https://github.com/potchara-msu/Cat-Dog-Class.git .
+RUN git clone https://github.com/potchara-msu/Cat-Dog-Class.git .
 
 # Copy the rest of the application code
 COPY . .
